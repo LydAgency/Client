@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Merci — CoachLinkQ</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/cq-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root { --green: #2eea76; --green-deep: #1fc95f; --black: #070807; --white: #fff; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { min-height: 100vh; font-family: Inter, system-ui, sans-serif; color: var(--white); background: var(--black); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  a { color: inherit; }
+
+  .stage { position: relative; min-height: 100vh; display: grid; place-items: center; padding: 64px 16px 120px; overflow: hidden; }
+  /* Le Q géant en filigrane et le halo vert de la maquette */
+  .ghost { position: absolute; left: -6%; top: 6%; width: 52vw; max-width: 720px; opacity: .06; pointer-events: none; }
+  .ring { position: absolute; border-radius: 50%; border: 1.5px solid rgba(46,234,118,.55); pointer-events: none; }
+  .ring.r1 { width: 520px; height: 520px; left: -330px; top: 30%; }
+  .ring.r2 { width: 460px; height: 460px; right: -300px; top: -10%; }
+  .glow { position: absolute; left: 50%; bottom: -240px; width: 1100px; height: 420px; transform: translateX(-50%); background: radial-gradient(ellipse at center, rgba(46,234,118,.85) 0%, rgba(46,234,118,.35) 35%, rgba(46,234,118,0) 70%); filter: blur(30px); pointer-events: none; }
+
+  .content { position: relative; max-width: 620px; text-align: center; }
+  .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
+  .brand-logo { height: 46px; width: auto; max-width: 86vw; object-fit: contain; }
+  h1 { margin-top: 30px; font: 800 clamp(30px, 4.6vw, 44px)/1.15 Montserrat, sans-serif; letter-spacing: -0.01em; }
+  .lede { margin: 18px auto 0; max-width: 470px; font-size: 16px; line-height: 1.6; color: rgba(255,255,255,.82); }
+  .lede a { text-decoration: underline; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; border: 0; cursor: pointer; font: 700 15px/1 Montserrat, sans-serif; border-radius: 12px; padding: 16px 30px; background: var(--green); color: var(--black); text-decoration: none; transition: transform .15s, background .15s; }
+  .btn:hover { transform: translateY(-1px); background: #45f088; }
+  .back { margin-top: 30px; }
+
+  /* Questions facultatives */
+  .extra { margin: 40px auto 0; max-width: 460px; text-align: left; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12); border-radius: 16px; padding: 24px 22px; }
+  .extra h2 { font: 800 17px/1.3 Montserrat, sans-serif; }
+  .extra .hint { margin-top: 4px; font-size: 13px; color: rgba(255,255,255,.6); }
+  .q { margin-top: 18px; }
+  .q > span { display: block; font: 600 14px/1.3 Inter, sans-serif; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+  .chip input { position: absolute; opacity: 0; pointer-events: none; }
+  .chip span { display: inline-block; padding: 9px 13px; border-radius: 999px; border: 1px solid rgba(255,255,255,.22); font-size: 13.5px; cursor: pointer; transition: background .15s, border-color .15s, color .15s; }
+  .chip input:checked + span { background: var(--green); border-color: var(--green); color: var(--black); font-weight: 600; }
+  .chip input:focus-visible + span { outline: 2px solid var(--green); outline-offset: 2px; }
+  .extra .btn { width: 100%; margin-top: 22px; padding: 14px 20px; font-size: 14px; background: var(--white); }
+  .extra .btn:hover { background: #e9ece9; }
+  @media (max-width: 720px) { .ring { opacity: .35; } .ghost { width: 90vw; left: -20%; top: 2%; } }
+  .done { margin-top: 0; font-size: 15px; color: var(--green); font-weight: 600; text-align: center; }
+</style>
+</head>
+<body>
+<main class="stage">
+  <img class="ghost" src="assets/cq-mark.png" alt="" aria-hidden="true">
+  <span class="ring r1" aria-hidden="true"></span>
+  <span class="ring r2" aria-hidden="true"></span>
+  <span class="glow" aria-hidden="true"></span>
+
+  <div class="content">
+    <a class="brand" href="index.html" aria-label="CoachLinkQ, accueil"><img class="brand-logo" src="assets/logo-coachlinkq.png" alt="CoachLinkQ — Connecte-toi au bon coach"></a>
+    <h1>Merci, ton inscription a bien été envoyée&nbsp;!</h1>
+    <p class="lede">Tu es inscrit(e) à la liste d'attente des bénéficiaires. Nous te tiendrons informé(e) du lancement de CoachLinkQ selon les informations précisées dans notre <a href="confidentialite.html">politique de confidentialité</a>.</p>
+
+    <form class="extra" id="extra" hidden>
+      <h2>Aide-nous à te trouver le bon coach</h2>
+      <p class="hint">Facultatif, 20 secondes.</p>
+
+      <div class="q">
+        <span>Tu préfères un coach…</span>
+        <div class="chips">
+          <label class="chip"><input type="radio" name="format" value="En salle"><span>En salle</span></label>
+          <label class="chip"><input type="radio" name="format" value="À domicile"><span>À domicile</span></label>
+          <label class="chip"><input type="radio" name="format" value="En ligne"><span>En ligne</span></label>
+          <label class="chip"><input type="radio" name="format" value="Peu importe"><span>Peu importe</span></label>
+        </div>
+      </div>
+
+      <div class="q">
+        <span>Ton budget par séance</span>
+        <div class="chips">
+          <label class="chip"><input type="radio" name="budget" value="Moins de 30 €"><span>Moins de 30 €</span></label>
+          <label class="chip"><input type="radio" name="budget" value="30 à 50 €"><span>30 à 50 €</span></label>
+          <label class="chip"><input type="radio" name="budget" value="50 à 80 €"><span>50 à 80 €</span></label>
+          <label class="chip"><input type="radio" name="budget" value="Plus de 80 €"><span>Plus de 80 €</span></label>
+          <label class="chip"><input type="radio" name="budget" value="Je ne sais pas"><span>Je ne sais pas</span></label>
+        </div>
+      </div>
+
+      <div class="q">
+        <span>Qu'est-ce qui t'a bloqué jusqu'ici ?</span>
+        <div class="chips">
+          <label class="chip"><input type="radio" name="frein" value="Je ne sais pas où chercher"><span>Je ne sais pas où chercher</span></label>
+          <label class="chip"><input type="radio" name="frein" value="Je ne sais pas à qui faire confiance"><span>À qui faire confiance</span></label>
+          <label class="chip"><input type="radio" name="frein" value="Le prix"><span>Le prix</span></label>
+          <label class="chip"><input type="radio" name="frein" value="La motivation"><span>La motivation</span></label>
+          <label class="chip"><input type="radio" name="frein" value="J'ai déjà un coach"><span>J'ai déjà un coach</span></label>
+        </div>
+      </div>
+
+      <button class="btn" type="submit" id="send">Envoyer mes réponses</button>
+    </form>
+
+    <a class="btn back" href="index.html">Retour au site</a>
+  </div>
+</main>
+
+<script>
+  // Même URL que dans index.html.
+  var ENDPOINT = "";
+
+  var inscrit = null;
+  try { inscrit = JSON.parse(sessionStorage.getItem("cq_inscrit") || "null"); } catch (e) {}
+
+  var extra = document.getElementById("extra");
+  // Les questions n'apparaissent qu'à quelqu'un qui vient de s'inscrire depuis ce navigateur.
+  if (inscrit && inscrit.email) extra.hidden = false;
+
+  extra.addEventListener("submit", function (e) {
+    e.preventDefault();
+    function pick(n) { var i = extra.querySelector('input[name="' + n + '"]:checked'); return i ? i.value : ""; }
+    var payload = { stage: "details", email: inscrit.email, prenom: inscrit.prenom, format: pick("format"), budget: pick("budget"), frein: pick("frein") };
+    var btn = document.getElementById("send");
+    btn.disabled = true;
+    btn.textContent = "Envoi…";
+    var req = ENDPOINT
+      ? fetch(ENDPOINT, { method: "POST", mode: "no-cors", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(payload) })
+      : new Promise(function (r) { setTimeout(r, 400); });
+    req.catch(function () {}).then(function () {
+      try { sessionStorage.removeItem("cq_inscrit"); } catch (err) {}
+      extra.innerHTML = '<p class="done">C\'est noté, merci&nbsp;!</p>';
+    });
+  });
+</script>
+</body>
+</html>
